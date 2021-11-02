@@ -2,15 +2,16 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Header from "./components/header";
+import Body from './components/body/body';
 
 function App() {
-  return (
-    <div className="App">
-      <Header />
+    return (
+        <div className="App">
+            <Header/>
+            <Body/>
 
-
-    </div>
-  );
+        </div>
+    );
 }
 
 export default App;

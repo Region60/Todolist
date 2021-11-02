@@ -1,0 +1,25 @@
+.body {
+    background-color: #61dafb;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height:85vh ;
+    padding: 10px;
+
+
+}
+
+.body__right-window{
+    background-color: #459eb8;
+    width: 48%;
+    margin: 2px;
+    padding: 4px;
+
+}
+
+.body__left-window {
+    background-color: #459eb8;
+    width: 48%;
+    margin: 2px;
+    padding: 4px;
+}
