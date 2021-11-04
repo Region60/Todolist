@@ -1,9 +1,10 @@
-
-
+import React from "react";
 const RightWindow = () => {
     return (
         <div className={"body__right-window"}>
-            Right Window
+            <div className={"right-window__challenges-ahead"}>
+                Список дел
+            </div>
         </div>
     )
 }
