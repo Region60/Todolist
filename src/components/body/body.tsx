@@ -1,11 +1,11 @@
-import LeftWindow from "./leftWindow"
+import LeftWindow, { LeftWindowContainer } from "./leftWindow"
 import RightWindow from "./RightWindow"
 import "./body.css"
 
 const Body = () => {
     return (
         <div className={"body"}>
-            <LeftWindow/>
+            <LeftWindowContainer/>
             <RightWindow/>
         </div>
 

@@ -1,5 +1,3 @@
-
-
 const SUBMIT_VALUE = "SUBMIT_VALUE"
 
 
@@ -8,15 +6,16 @@ let initialState = {
 
 }
 
- export const taskReducers = (state = initialState, action) => {
+export const taskReducers = (state = initialState, action) => {
     switch (action.type) {
         case SUBMIT_VALUE:
             let task = {
-                id:0,
-                taskText:action.data
+                id: 0,
+                taskText: action.data
             }
             return {...state, task}
-
+        default:
+            return state
     }
 }
 
@@ -27,6 +26,6 @@ const actionsTaskReducer = {
     })
 }
 
-export const addTasks = (data)=>(dispatch)=>{
+export const addTasks = (data) => (dispatch) => {
     dispatch(actionsTaskReducer.submitValue(data))
 }
