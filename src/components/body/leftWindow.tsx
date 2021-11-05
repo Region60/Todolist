@@ -2,7 +2,10 @@ import React, {useState} from "react";
 import {connect} from "react-redux";
 import {addTasks} from "../../redux/tasksReducers";
 
-type Props = {}
+type Props = {
+    submitValue:()=>void
+    state:any
+}
 type TargetType = {
     value: string
 }
@@ -11,7 +14,7 @@ type EventType = {
 }
 
 
-const LeftWindow: React.FC<Props> = () => {
+const LeftWindow: React.FC<Props> = (props) => {
     let [inputState, setInputState] = useState("")
 
     let handleChange = (event: EventType) => {
@@ -19,9 +22,9 @@ const LeftWindow: React.FC<Props> = () => {
         setInputState(event.target.value)
     }
 
-let postTask = ()=> {
-    console.log("click")
 
+let postTask = ()=> {
+props.submitValue
 }
 
     return (
