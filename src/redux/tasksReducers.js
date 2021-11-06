@@ -1,31 +1,37 @@
-const SUBMIT_VALUE = "SUBMIT_VALUE"
+import {v4 as uuidv4} from "uuid"
+const ADD_TASK = "ADD_TASK"
+const GET_TASK = "GET_TASK"
 
 
 let initialState = {
-    tasks: []
+    tasks: [
+        {id:0,
+        taskText: "blabla"}
+    ]
 
 }
 
 export const taskReducers = (state = initialState, action) => {
+
     switch (action.type) {
-        case SUBMIT_VALUE:
+        case ADD_TASK:
             let task = {
-                id: 0,
+                id: uuidv4(),
                 taskText: action.data
             }
-            return {...state, task}
+            return {...state, ...state.tasks.push(task)}
+        case GET_TASK:{
+            console.log("get task")
+            return {...state, ...state.tasks}
+        }
         default:
             return state
     }
 }
 
-const actionsTaskReducer = {
-    submitValue: (data) => ({
-        type: SUBMIT_VALUE,
-        data
-    })
+export const actionsTaskReducer = {
+    addTask: (data) => ({type: ADD_TASK, data}),
+    getTask: () => ({type:GET_TASK})
 }
 
-export const addTasks = (data) => (dispatch) => {
-    dispatch(actionsTaskReducer.submitValue(data))
-}
+
