@@ -6,8 +6,8 @@ import Body from './components/body/body';
 function App() {
     return (
         <div className="App">
-            <Header/>
-            <Body/>
+            <Header />
+            <Body />
 
         </div>
     );

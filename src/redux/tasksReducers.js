@@ -19,7 +19,10 @@ export const taskReducers = (state = initialState, action) => {
                 id: uuidv4(),
                 taskText: action.data
             }
-            return {...state, ...state.tasks.push(task)}
+            return {
+                tasks: [...state.tasks, task]
+
+            }
         case GET_TASK:{
             console.log("get task")
             return {...state, ...state.tasks}
@@ -33,5 +36,4 @@ export const actionsTaskReducer = {
     addTask: (data) => ({type: ADD_TASK, data}),
     getTask: () => ({type:GET_TASK})
 }
-
 

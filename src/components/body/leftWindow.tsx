@@ -1,45 +1,35 @@
 import React, {useState} from "react";
-import {connect} from "react-redux";
+import {useDispatch} from "react-redux";
 import {actionsTaskReducer} from "../../redux/tasksReducers";
 
-type Props = {
-    submitValue:(inputState:string)=>void
-}
 type TargetType = {
     value: string
 }
 type EventType = {
     target: TargetType
 }
-type mapSateToPropsType = {
-    tasks:any
-}
-type mapDispatchToPropsType = {
-    submitValue: ()=> void
-}
 
 
-
-const LeftWindow: React.FC<Props> = (props) => {
+export const LeftWindow: React.FC = () => {
     let [inputState, setInputState] = useState("")
 
     let handleChange = (event: EventType) => {
         setInputState(event.target.value)
     }
 
-
-let postTask = ():void=> {
-console.log(inputState)
-    props.submitValue(inputState)
-}
+    const dispatch = useDispatch();
+    let postTask = (): void => {
+        dispatch(actionsTaskReducer.addTask(inputState))
+        setInputState("")
+    }
     console.log("render left")
 
     return (
         <div className={"body__left-window"}>
-            <div >
+            <div>
                 <input type="text" onChange={handleChange} value={inputState}/>
             </div>
-            <div >
+            <div>
                 <button type="submit" onClick={postTask}>
                     создать
                 </button>
@@ -49,18 +39,3 @@ console.log(inputState)
 
     )
 }
-
-const mapSateToProps = (state: any) => {
-    return {
-        tasks: state
-    }
-}
-const mapDispatchToProps = (dispatch: any) => {
-    return {
-        submitValue: (data: string) => {
-            dispatch(actionsTaskReducer.addTask(data))
-        }
-    }
-}
-
-export const LeftWindowContainer = connect(mapSateToProps, mapDispatchToProps)(LeftWindow)
