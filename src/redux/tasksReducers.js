@@ -1,12 +1,15 @@
 import {v4 as uuidv4} from "uuid"
+
 const ADD_TASK = "ADD_TASK"
-const GET_TASK = "GET_TASK"
+const DELETE_TASK = "DELETE_TASK"
 
 
 let initialState = {
     tasks: [
-        {id:0,
-        taskText: "blabla"}
+        {
+            id: 0,
+            taskText: "blabla"
+        }
     ]
 
 }
@@ -23,9 +26,10 @@ export const taskReducers = (state = initialState, action) => {
                 tasks: [...state.tasks, task]
 
             }
-        case GET_TASK:{
-            console.log("get task")
-            return {...state, ...state.tasks}
+        case DELETE_TASK: {
+            return {
+                tasks:[ ...state.tasks.filter((i) => i.id !== action.id)]
+            }
         }
         default:
             return state
@@ -34,6 +38,5 @@ export const taskReducers = (state = initialState, action) => {
 
 export const actionsTaskReducer = {
     addTask: (data) => ({type: ADD_TASK, data}),
-    getTask: () => ({type:GET_TASK})
+    deleteTask: (id) => ({type: DELETE_TASK, id})
 }
-

@@ -22,7 +22,6 @@ export const LeftWindow: React.FC = () => {
         dispatch(actionsTaskReducer.addTask(inputState))
         setInputState("")
     }
-    console.log("render left")
 
     return (
         <div className={"body__left-window"}>
